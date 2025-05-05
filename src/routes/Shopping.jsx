@@ -1,7 +1,7 @@
 
 import { useEffect } from "react";
 import {getAllProduct} from "../api";
-
+import '../css/shopping.css'
 const Shopping = () =>{
     useEffect(()=>{
         getAllProduct();
