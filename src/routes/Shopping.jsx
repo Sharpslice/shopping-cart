@@ -4,6 +4,8 @@ import {getAllProduct} from "../api";
 import '../css/shopping.css'
 import { useState } from "react";
 import ProductCard from "../components/ProductCard";
+import ShopContext from "../context";
+import { useContext } from "react";
 const Shopping = () =>{
     const [products,setProducts] = useState(null);
     useEffect(()=>{
@@ -14,10 +16,13 @@ const Shopping = () =>{
         fetchData();
     },[]
 
+
+    
 )
+    const {cartItems} = useContext(ShopContext);
     return (
         <div id="shopping-page">
-            
+            {console.log(cartItems)}
             { products &&
             
             products.map((item)=>(
@@ -25,6 +30,7 @@ const Shopping = () =>{
                     key={item.id}
                     item ={item}
                 />
+
             ))}
         </div>
     )

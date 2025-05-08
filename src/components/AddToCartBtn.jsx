@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import '../css/addToCartBtn.css'
 import TestBtn from './TestBtn'
-const AddToCartBtn = () =>{
+const AddToCartBtn = ({item}) =>{
     const [gate,setGate]= useState(true)
     const [amount, setAmount] = useState(0);
 
