@@ -13,7 +13,7 @@ function App() {
 
 
 
-  
+
   const addToCart = (product) =>{
     const cart = new Map(cartItems)
     if(cart.has(product.id))
@@ -26,7 +26,8 @@ function App() {
     }
     else{
       console.log("added to cart");
-      cart.set(product.id,product);
+      const updateProduct = {...product,orderQuantity: product.orderQuantity+1}
+      cart.set(product.id,updateProduct);
       setCartItems(cart);
     }
   }

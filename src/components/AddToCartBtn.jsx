@@ -5,13 +5,13 @@ import ShopContext from '../context'
 import { useContext } from 'react'
 const AddToCartBtn = ({item}) =>{
     const [gate,setGate]= useState(true)
-    const {cartItems,addToCart,removeFromCart} = useContext(ShopContext)
+    const {addToCart,removeFromCart} = useContext(ShopContext)
 
    
     return(
         gate ? 
         <button className ="add-to-cart-btn" onClick={()=> { 
-            
+            addToCart(item)
             setGate(false);
 
         }} >
