@@ -31,8 +31,28 @@ function App() {
       setCartItems(cart);
     }
   }
+
   const removeFromCart =(product) =>{
-    console.log("remove",product);
+    const cart = new Map(cartItems)
+    
+
+    if(cart.has(product.id))
+    {
+      if(cart.get(product.id).orderQuantity == 1)
+        {
+          console.log("delete")
+          cart.delete(product.id)
+          setCartItems(cart)
+        }
+      else{
+        console.log("in cart already");
+      const {orderQuantity} = cart.get(product.id)
+      const updateProduct = {...product, orderQuantity: orderQuantity-1}
+      cart.set(product.id,updateProduct);
+      setCartItems(cart);
+      }
+      
+    }
   }
 
 
