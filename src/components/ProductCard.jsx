@@ -7,8 +7,6 @@ const ProductCard =({item})=>{
             <img src={item.image} alt="" />
             <p>{item.title}</p>
             <AddToCartBtn item={item}/>
-            
-            
         </div>
 
 

@@ -1,13 +1,16 @@
-const TestBtn = ({amount, onAddBtn, onSubBtn}) =>{
+import ShopContext from "../context"
+import { useContext } from "react"
+const TestBtn = ({ onAddBtn, onSubBtn,item}) =>{
+    const {cartItems} = useContext(ShopContext)
     return(
         <div id = "fakeBtn">
-            <button id="leftBtn" onClick={onSubBtn}> 
+            <button id="leftBtn" onClick={()=>{onSubBtn(item)}}> 
                 -
             </button>
 
-            {amount}
+            {cartItems.get(item.id) ? cartItems.get(item.id).orderQuantity : 0}
 
-            <button id= "rightBtn" onClick={onAddBtn}>
+            <button id= "rightBtn" onClick={()=>{onAddBtn(item)}}>
                 +
             </button>
 

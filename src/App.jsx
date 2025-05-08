@@ -11,11 +11,27 @@ import ShopContext from './context'
 function App() {
   const [cartItems, setCartItems] = useState(new Map())
 
+
+
+  
   const addToCart = (product) =>{
-      console.log("add")
+    const cart = new Map(cartItems)
+    if(cart.has(product.id))
+    {
+      console.log("in cart already");
+      const {orderQuantity} = cart.get(product.id)
+      const updateProduct = {...product, orderQuantity: orderQuantity+1}
+      cart.set(product.id,updateProduct);
+      setCartItems(cart);
+    }
+    else{
+      console.log("added to cart");
+      cart.set(product.id,product);
+      setCartItems(cart);
+    }
   }
   const removeFromCart =(product) =>{
-    console.log("remove");
+    console.log("remove",product);
   }
 
 

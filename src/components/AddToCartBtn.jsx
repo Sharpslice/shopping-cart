@@ -5,10 +5,9 @@ import ShopContext from '../context'
 import { useContext } from 'react'
 const AddToCartBtn = ({item}) =>{
     const [gate,setGate]= useState(true)
-    const {addToCart,removeFromCart} = useContext(ShopContext)
+    const {cartItems,addToCart,removeFromCart} = useContext(ShopContext)
 
-
-
+   
     return(
         gate ? 
         <button className ="add-to-cart-btn" onClick={()=> { 
@@ -18,7 +17,7 @@ const AddToCartBtn = ({item}) =>{
         }} >
             Add to Order
         </button>
-        : <TestBtn amount={item.orderQuantity} onAddBtn={addToCart} onSubBtn={removeFromCart}/>
+        : <TestBtn item ={item} onAddBtn={addToCart} onSubBtn={removeFromCart}/>
     )
 }
 
