@@ -17,7 +17,7 @@ const AddToCartBtn = ({item}) =>{
         }} >
             Add to Order
         </button>
-        : <TestBtn item ={item} onAddBtn={addToCart} onSubBtn={removeFromCart}/>
+        : <TestBtn item ={item} onAddBtn={addToCart} onSubBtn={removeFromCart} onGate={setGate}/>
     )
 }
 
