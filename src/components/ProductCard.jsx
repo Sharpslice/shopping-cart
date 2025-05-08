@@ -6,7 +6,7 @@ const ProductCard =({item})=>{
         <div id = "product-card">
             <img src={item.image} alt="" />
             <p>{item.title}</p>
-            <AddToCartBtn/>
+            <AddToCartBtn item={item}/>
             
             
         </div>

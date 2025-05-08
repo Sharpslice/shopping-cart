@@ -1,6 +1,7 @@
 export default class Product{
     constructor(item){
         this.title = item.title;
-        this.url = item.image;
+        this.image = item.image;
+        this.orderQuantity = 0;
     }
 }

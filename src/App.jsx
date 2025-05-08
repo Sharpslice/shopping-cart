@@ -9,11 +9,20 @@ import ShopContext from './context'
 
 
 function App() {
-  const [cartItems, setCartItems] = useState(["hello"])
+  const [cartItems, setCartItems] = useState(new Map())
+
+  const addToCart = (product) =>{
+      console.log("add")
+  }
+  const removeFromCart =(product) =>{
+    console.log("remove");
+  }
+
+
 
   return (
     <>
-   <ShopContext.Provider value ={{cartItems}}>
+   <ShopContext.Provider value ={{cartItems,addToCart,removeFromCart}}>
       <div id= "main-container">
         <nav>
             <ul id= "nav-ul">
