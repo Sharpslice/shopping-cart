@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import {getAllProduct} from "../api";
 import '../css/shopping.css'
 import { useState } from "react";
+import ProductCard from "../components/ProductCard";
 const Shopping = () =>{
-    //const products = [{id: 1, title: "test"}]
     const [products,setProducts] = useState(null);
     useEffect(()=>{
         const fetchData =async() =>{
@@ -16,12 +16,15 @@ const Shopping = () =>{
 
 )
     return (
-        <div>
-            <h1>Shopping page</h1>
+        <div id="shopping-page">
+            
             { products &&
             
             products.map((item)=>(
-                <li key={item.id}> {item.title}</li>
+                <ProductCard
+                    key={item.id}
+                    item ={item}
+                />
             ))}
         </div>
     )

@@ -1,0 +1,15 @@
+.add-to-cart-btn{
+    background-color: #ffd814;
+    padding: 7px;
+    border-radius: 13px;
+
+
+    cursor: pointer;
+}
+.add-to-cart-btn:hover{
+    filter: brightness(96%);
+}
+
+#testBtn{
+    display: flex;
+}
