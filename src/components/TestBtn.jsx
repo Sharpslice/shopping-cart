@@ -8,7 +8,7 @@ const TestBtn = ({ onAddBtn, onSubBtn,item}) =>{
                 
                 onSubBtn(item);
                 }}> 
-                
+                -
             </button>
 
             {cartItems.get(item.id).orderQuantity}

@@ -10,16 +10,19 @@ function App() {
   
   
   
-  
+  //sets up intital cart. If local storage has items, use that cart, if not, create an empty map
   const [cartItems, setCartItems] = useState(()=>{
     return localStorage.getItem("cart") ? new Map(JSON.parse(localStorage.getItem("cart"))) : new Map();
   })
 
+  //everytime global cartItem is updated(setCartItems), update local storage
   useEffect(()=>{
     localStorage.setItem("cart",JSON.stringify([...cartItems]))
   },[cartItems])
   
   const addToCart = (product) =>{
+
+    
       setCartItems(prev=>
         {
           const cart = new Map(prev);
@@ -28,16 +31,13 @@ function App() {
               console.log("has")
               const updateProduct = {...product, orderQuantity: cart.get(product.id).orderQuantity+1}
               cart.set(product.id,updateProduct);
-
-              //localStorage.setItem("cart",JSON.stringify([...cart]))
             }
           else{
               const updateProduct = {...product, orderQuantity: 1}
               cart.set(product.id,updateProduct);
-              //localStorage.setItem("cart",JSON.stringify([...cart]))
+             
           }
 
-          //console.log(localStorage)
         
           return cart
         }
@@ -52,12 +52,11 @@ function App() {
       
       const updateProduct = {...product, orderQuantity: cart.get(product.id).orderQuantity -1}
       cart.set(product.id, updateProduct);
-      //localStorage.setItem(product.id,JSON.stringify(updateProduct))
+     
       if(cart.get(product.id).orderQuantity == 0){
         cart.delete(product.id);
         
       }
-  
       return cart;
     })
     
