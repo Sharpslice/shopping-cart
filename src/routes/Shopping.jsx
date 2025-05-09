@@ -2,14 +2,38 @@
 import { useEffect } from "react";
 import {getAllProduct} from "../api";
 import '../css/shopping.css'
+import { useState } from "react";
+import ProductCard from "../components/ProductCard";
+import ShopContext from "../context";
+import { useContext } from "react";
+import Product from "../product";
 const Shopping = () =>{
+    const [products,setProducts] = useState(null);
     useEffect(()=>{
-        getAllProduct();
-    },[])
+        const fetchData =async() =>{
+            const data = await getAllProduct();
+            setProducts(data);
+        }
+        fetchData();
+    },[]
+
+    
+    
+)
+console.log(localStorage)
+    const {cartItems} = useContext(ShopContext);
     return (
-        <div>
-            <h1>Shopping page</h1>
-           
+        <div id="shopping-page">
+            {console.log(cartItems)}
+            { products &&
+            
+            products.map((item)=>(
+                <ProductCard
+                    key={item.id}
+                    item ={new Product(item)}
+                />
+
+            ))}
         </div>
     )
 }
