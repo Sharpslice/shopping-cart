@@ -5,55 +5,44 @@ import { useState } from 'react'
 import ShopContext from './context'
 
 
-
-
-
 function App() {
   const [cartItems, setCartItems] = useState(new Map())
-
-
-
-
   const addToCart = (product) =>{
-    const cart = new Map(cartItems)
-    if(cart.has(product.id))
-    {
-      console.log("in cart already");
-      const {orderQuantity} = cart.get(product.id)
-      const updateProduct = {...product, orderQuantity: orderQuantity+1}
-      cart.set(product.id,updateProduct);
-      setCartItems(cart);
-    }
-    else{
-      console.log("added to cart");
-      const updateProduct = {...product,orderQuantity: product.orderQuantity+1}
-      cart.set(product.id,updateProduct);
-      setCartItems(cart);
-    }
+      setCartItems(prev=>
+        {
+          const cart = new Map(prev);
+          if(cart.has(product.id))
+            {
+              console.log("has")
+              const updateProduct = {...product, orderQuantity: cart.get(product.id).orderQuantity+1}
+              cart.set(product.id,updateProduct);
+            }
+          else{
+              const updateProduct = {...product, orderQuantity: 1}
+              cart.set(product.id,updateProduct);
+          }
+        
+          return cart
+        }
+      ) 
   }
 
   const removeFromCart =(product) =>{
-    const cart = new Map(cartItems)
-    
-
-    if(cart.has(product.id))
-    {
-      if(cart.get(product.id).orderQuantity == 1)
-        {
-          console.log("delete")
-          cart.delete(product.id)
-          setCartItems(cart)
-        }
-      else{
-        console.log("in cart already");
-      const {orderQuantity} = cart.get(product.id)
-      const updateProduct = {...product, orderQuantity: orderQuantity-1}
-      cart.set(product.id,updateProduct);
-      setCartItems(cart);
-      }
+    setCartItems(prev=>{
+      const cart = new Map(cartItems); // make a copy
       
+      const updateProduct = {...prev, orderQuantity: cart.get(product.id).orderQuantity -1}
+      cart.set(product.id, updateProduct);
+
+      if(cart.get(product.id).orderQuantity == 0){
+        cart.delete(product.id);
+      }
+  
+      return cart;
+    })
+    
     }
-  }
+  
 
 
 
