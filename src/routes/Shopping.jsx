@@ -17,9 +17,10 @@ const Shopping = () =>{
         fetchData();
     },[]
 
-
+    
     
 )
+console.log(localStorage)
     const {cartItems} = useContext(ShopContext);
     return (
         <div id="shopping-page">
