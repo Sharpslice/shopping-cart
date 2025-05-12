@@ -10,6 +10,6 @@
     filter: brightness(96%);
 }
 
-#testBtn{
-    display: flex;
+.quantityBtn{
+    border: 1px solid black;
 }

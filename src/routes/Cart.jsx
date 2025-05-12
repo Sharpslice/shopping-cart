@@ -1,43 +1,41 @@
 
-import CartCard from "../components/CartCard";
+
 import CheckOutBox from "../components/CheckOutBox";
 import ProductCard from "../components/ProductCard";
 import ShopContext from "../context";
 import { useContext } from "react";
-
+import '../css/cart.css'
 
 const Cart = () => {
     const {cartItems} = useContext(ShopContext)
     const total = Array.from(cartItems.values()).reduce((sum,product)=>{
         return sum + (product.price*product.orderQuantity)
     },0)
-    
+    const totalItems = Array.from(cartItems.values()).reduce((sum,product)=>{
+        return sum + (product.orderQuantity)
+    },0)
     
     return( 
-        <div>
-            <div>
-                <h1>Cart page</h1>
+        <div id="cart-container">
+           <div id="cart">
                 {
                     [...cartItems.entries()].map(([key,product])=>(
-                        <CartCard
-                            key= {key}
-                            product ={product}
-                        
-                        
+                        <ProductCard
+                            key={key}
+                            className={"cart-card"}
+                            item={product}
                         />
-                            
-                    
                     ))
+
                 }
-            </div>
-           <div>
-           <CheckOutBox
-                total = {total}
-            />
            </div>
-            
-           
-           
+           <div id="checkout">
+                <CheckOutBox
+                    totalItems={totalItems}
+                    totalPrice={total}
+                
+                />
+           </div>
         </div>
     )
     

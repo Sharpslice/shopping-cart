@@ -12,8 +12,7 @@ const routes = createBrowserRouter([
             {index:true, element:<Home/>},
             {path:"shopping", element: <Shopping/>},
             {path:"cart",element:<Cart/>},
-            
-
+        
         ]
     },
     

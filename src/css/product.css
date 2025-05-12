@@ -1,4 +1,12 @@
-#product-card >img {
+.product-card >img {
     max-width: 150px;
     max-height: 150px;
+    display: flex;
+    justify-content: center;
+}
+.product-card{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid black;
 }

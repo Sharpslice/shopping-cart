@@ -4,7 +4,6 @@ import {getAllProduct} from "../api";
 import '../css/shopping.css'
 import { useState } from "react";
 import ProductCard from "../components/ProductCard";
-import ShopContext from "../context";
 
 import Product from "../product";
 const Shopping = () =>{
@@ -20,8 +19,6 @@ const Shopping = () =>{
     
     
 )
-
-   
     return (
         <div id="shopping-page">
            
@@ -30,6 +27,7 @@ const Shopping = () =>{
             products.map((item)=>(
                 <ProductCard
                     key={item.id}
+                    className={"product-card"}
                     item ={new Product(item)}
                 />
 

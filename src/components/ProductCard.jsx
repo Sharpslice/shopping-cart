@@ -1,9 +1,9 @@
 import "../css/product.css"
 import AddToCartBtn from "./AddToCartBtn";
 import TestBtn from "./TestBtn";
-const ProductCard =({item})=>{
+const ProductCard =({className,item})=>{ 
     return(
-        <div id = "product-card">
+        <div className={className}> 
             <img src={item.image} alt="" />
             <p>{item.title}</p>
             <p>{item.price}</p>
