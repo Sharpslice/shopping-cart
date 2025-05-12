@@ -5,15 +5,22 @@ import ProductCard from "../components/ProductCard";
 import ShopContext from "../context";
 import { useContext } from "react";
 import '../css/cart.css'
+import { useMemo } from "react";
 
 const Cart = () => {
     const {cartItems} = useContext(ShopContext)
-    const total = Array.from(cartItems.values()).reduce((sum,product)=>{
-        return sum + (product.price*product.orderQuantity)
-    },0)
-    const totalItems = Array.from(cartItems.values()).reduce((sum,product)=>{
-        return sum + (product.orderQuantity)
-    },0)
+    const total = useMemo(()=>{
+        return Array.from(cartItems.values()).reduce((sum,product)=>{
+            return sum+(product.price * product.orderQuantity)
+
+        },0)
+    },[cartItems])
+
+    const totalItems = useMemo(()=>{
+        return Array.from(cartItems.values()).reduce((sum,product)=>{
+            return sum+product.orderQuantity
+        },0)
+    },[cartItems])
     
     return( 
         <div id="cart-container">
