@@ -21,14 +21,12 @@ function App() {
   },[cartItems])
   
   const addToCart = (product) =>{
-
-    
       setCartItems(prev=>
         {
           const cart = new Map(prev);
           if(cart.has(product.id))
             {
-              console.log("has")
+              
               const updateProduct = {...product, orderQuantity: cart.get(product.id).orderQuantity+1}
               cart.set(product.id,updateProduct);
             }

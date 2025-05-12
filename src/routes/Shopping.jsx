@@ -5,7 +5,7 @@ import '../css/shopping.css'
 import { useState } from "react";
 import ProductCard from "../components/ProductCard";
 import ShopContext from "../context";
-import { useContext } from "react";
+
 import Product from "../product";
 const Shopping = () =>{
     const [products,setProducts] = useState(null);
@@ -20,11 +20,11 @@ const Shopping = () =>{
     
     
 )
-console.log(localStorage)
-    const {cartItems} = useContext(ShopContext);
+
+   
     return (
         <div id="shopping-page">
-            {console.log(cartItems)}
+           
             { products &&
             
             products.map((item)=>(

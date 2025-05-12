@@ -1,0 +1,7 @@
+.cart-card > img{
+    max-width: 150px;
+    max-height: 150px;
+}
+.cart-card{
+    display: flex;
+}
